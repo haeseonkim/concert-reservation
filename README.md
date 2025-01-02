@@ -1,3 +1,9 @@
+## 마일스톤
+<div>
+https://github.com/users/haeseonkim/projects/3/views/1
+
+</div>
+
 ## 플로우 차트
 <details>
 <summary> 콘서트 예매</summary>
