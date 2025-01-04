@@ -30,9 +30,10 @@ https://github.com/users/haeseonkim/projects/3/views/1
 <details>
 <summary>예약 가능한 날짜/좌석 조회</summary>
 <div>
-  
-![예약 가능 날짜 조회](https://github.com/user-attachments/assets/7dbc7e85-550c-4ebe-a6f1-f9662266740f)
-![예약 가능 좌석 조회](https://github.com/user-attachments/assets/e35bc144-51ce-481a-bf86-9a0ab216b06b)
+
+<img width="554" alt="예약 가능 날짜 조회" src="https://github.com/user-attachments/assets/a71b057f-3822-478b-b0b0-4145f7ed84d9" />
+
+<img width="543" alt="예약 가능 좌석 조회" src="https://github.com/user-attachments/assets/6c1659f4-2888-47da-833b-459048891fdd" />
 
 </div>
 </details>
@@ -41,8 +42,9 @@ https://github.com/users/haeseonkim/projects/3/views/1
 <summary>좌석 예약</summary>
 <div>
   
-![좌석 예약](https://github.com/user-attachments/assets/2d632524-bfb1-4080-9268-94f1d447bb4f)
-![임시 선점 좌석 만료 처리](https://github.com/user-attachments/assets/eef077a3-725d-49d7-8baf-140ae3bd98bc)
+<img width="543" alt="좌석 예약" src="https://github.com/user-attachments/assets/d721758a-9961-4cd2-a45e-413966611acd" />
+
+<img width="478" alt="임시 선점 좌석 만료 처리" src="https://github.com/user-attachments/assets/a2961b4e-58de-46e7-b04d-fced9ce1ea36" />
 
 
 </div>
@@ -52,8 +54,8 @@ https://github.com/users/haeseonkim/projects/3/views/1
 <summary>잔액 조회, 충전</summary>
 <div>
   
-![잔액 충전](https://github.com/user-attachments/assets/baaec8ba-43c7-4dd9-a099-6efa30486f31)
-![잔액 조회](https://github.com/user-attachments/assets/ed00a67c-7eba-49a7-941c-dd87cd97cc4e)
+<img width="518" alt="잔액 충전" src="https://github.com/user-attachments/assets/2effb3f6-1bb0-4f44-bb0d-722083390d01" />
+<img width="286" alt="잔액조회" src="https://github.com/user-attachments/assets/b1bc59e5-178f-434f-9b89-e997fc35de23" />
 
 </div>
 </details>
@@ -61,8 +63,8 @@ https://github.com/users/haeseonkim/projects/3/views/1
 <details>
 <summary>결제</summary>
 <div>
-
-![결제](https://github.com/user-attachments/assets/a6f10987-08c4-44cf-b16e-0a6fa30258a3)
+  
+<img width="544" alt="결제" src="https://github.com/user-attachments/assets/571d0d3d-449b-4cea-b998-f5cfb7589f44" />
 
 </div>
 </details>
