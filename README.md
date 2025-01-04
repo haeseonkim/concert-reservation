@@ -72,7 +72,7 @@ https://github.com/users/haeseonkim/projects/3/views/1
 <summary>콘서트 예약 ERD</summary>
 <div>
   
-![ERD](https://github.com/user-attachments/assets/4c5039ca-7e5b-47e5-99ae-dbee6791c279)
+![ERD_수정](https://github.com/user-attachments/assets/d82f2f17-f0b1-4bc9-a9c7-08439781ce9f)
 
 </div>
 </details>
