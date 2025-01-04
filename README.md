@@ -20,7 +20,9 @@ https://github.com/users/haeseonkim/projects/3/views/1
 <div>
 
 ![대기열 토큰 발급](https://github.com/user-attachments/assets/e3fb868c-01b8-4d60-9667-d9d3bd4aaa39)
-![토큰 활성화 여부 조회](https://github.com/user-attachments/assets/bbe34315-ef4b-46fc-9bab-b02060d9d814)
+
+<img width="524" alt="토큰 활성화 여부 조회" src="https://github.com/user-attachments/assets/b369e69c-1a23-4f33-80b2-fad753a3a8d2" />
+
 ![대기열 토큰 만료,활성화](https://github.com/user-attachments/assets/622cba40-0bac-4771-a046-24cc448dbeec)
 
 
