@@ -2,7 +2,6 @@ package kr.hhplus.be.server.domain.queueToken.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +11,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QueueToken {
+    private static final long EXPIRATION_MINUTES = 15;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,9 +26,17 @@ public class QueueToken {
     @Column(nullable = false)
     private Long userId;
 
+    @Builder.Default
     @Column(nullable = false)
-    private boolean isActive;
+    private boolean isActive = false;
 
     @Column(nullable = false)
     private LocalDateTime expiredAt;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.expiredAt == null) {
+            this.expiredAt = LocalDateTime.now().plusMinutes(EXPIRATION_MINUTES);
+        }
+    }
 }
