@@ -1,4 +1,4 @@
-package kr.hhplus.be.server.domain.userPoint.model;
+package kr.hhplus.be.server.domain.userPoint.enums;
 
 public enum TransactionType {
     CREDIT,
