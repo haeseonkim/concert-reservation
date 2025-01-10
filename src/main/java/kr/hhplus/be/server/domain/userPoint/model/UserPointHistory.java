@@ -19,13 +19,14 @@ public class UserPointHistory {
     @Column(nullable = false)
     private Long userId;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String action;
+    private TransactionType action;
 
     @Column(nullable = false)
     private int amount;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime transactionAt;
 }

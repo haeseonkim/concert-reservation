@@ -27,8 +27,9 @@ public class ConcertSeat {
     @Column(nullable = false)
     private Long userId;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private ConcertSeatStatus status;
 
     private LocalDateTime reservedAt;
 

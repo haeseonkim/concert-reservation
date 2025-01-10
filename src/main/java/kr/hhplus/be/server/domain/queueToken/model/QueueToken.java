@@ -26,9 +26,10 @@ public class QueueToken {
     @Column(nullable = false)
     private Long userId;
 
+    @Enumerated(EnumType.STRING)
     @Builder.Default
     @Column(nullable = false)
-    private boolean isActive = false;
+    private QueueTokenStatus status = QueueTokenStatus.WAITING;
 
     @Column(nullable = false)
     private LocalDateTime expiredAt;

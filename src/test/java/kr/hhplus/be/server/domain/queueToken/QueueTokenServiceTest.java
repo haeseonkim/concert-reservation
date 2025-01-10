@@ -1,6 +1,7 @@
 package kr.hhplus.be.server.domain.queueToken;
 
 import kr.hhplus.be.server.domain.queueToken.model.QueueToken;
+import kr.hhplus.be.server.domain.queueToken.model.QueueTokenStatus;
 import kr.hhplus.be.server.domain.queueToken.repository.QueueTokenRepository;
 import kr.hhplus.be.server.domain.queueToken.service.QueueTokenService;
 import org.junit.jupiter.api.DisplayName;
@@ -37,7 +38,7 @@ public class QueueTokenServiceTest {
                 .token(expectedToken)
                 .concertId(concertId)
                 .userId(userId)
-                .isActive(false)
+                .status(QueueTokenStatus.WAITING)
                 .expiredAt(LocalDateTime.now().plusMinutes(15))
                 .build();
 
@@ -54,6 +55,6 @@ public class QueueTokenServiceTest {
 
         assertEquals(concertId, queueToken.getConcertId());
         assertEquals(userId, queueToken.getUserId());
-        assertFalse(queueToken.isActive());
+        assertEquals(QueueTokenStatus.WAITING, queueToken.getStatus());
     }
 }
