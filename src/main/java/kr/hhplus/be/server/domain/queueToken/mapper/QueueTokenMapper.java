@@ -1,4 +1,4 @@
-package kr.hhplus.be.server.mapper;
+package kr.hhplus.be.server.domain.queueToken.mapper;
 
 import kr.hhplus.be.server.domain.queueToken.model.QueueToken;
 import kr.hhplus.be.server.dto.QueueTokenDTO;
