@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QueueToken {
-    private static final long EXPIRATION_MINUTES = 15;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,17 +25,9 @@ public class QueueToken {
     private Long userId;
 
     @Enumerated(EnumType.STRING)
-    @Builder.Default
     @Column(nullable = false)
-    private QueueTokenStatus status = QueueTokenStatus.WAITING;
+    private QueueTokenStatus status;
 
     @Column(nullable = false)
     private LocalDateTime expiredAt;
-
-    @PrePersist
-    public void prePersist() {
-        if (this.expiredAt == null) {
-            this.expiredAt = LocalDateTime.now().plusMinutes(EXPIRATION_MINUTES);
-        }
-    }
 }
