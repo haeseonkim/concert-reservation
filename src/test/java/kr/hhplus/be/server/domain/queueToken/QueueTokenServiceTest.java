@@ -1,7 +1,7 @@
 package kr.hhplus.be.server.domain.queueToken;
 
 import kr.hhplus.be.server.domain.queueToken.model.QueueToken;
-import kr.hhplus.be.server.domain.queueToken.model.QueueTokenStatus;
+import kr.hhplus.be.server.domain.queueToken.enums.QueueTokenStatus;
 import kr.hhplus.be.server.domain.queueToken.repository.QueueTokenRepository;
 import kr.hhplus.be.server.domain.queueToken.service.QueueTokenService;
 import org.junit.jupiter.api.Test;

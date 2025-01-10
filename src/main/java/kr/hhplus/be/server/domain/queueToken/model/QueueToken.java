@@ -1,6 +1,7 @@
 package kr.hhplus.be.server.domain.queueToken.model;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.queueToken.enums.QueueTokenStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;

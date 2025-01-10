@@ -1,6 +1,5 @@
 package kr.hhplus.be.server.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -14,7 +13,6 @@ public class ConcertDTO {
     @Getter
     @Builder
     public static class AvailableDateResponse {
-        @JsonFormat(pattern = "yyyy-MM-dd")
         private LocalDate date;
     }
 

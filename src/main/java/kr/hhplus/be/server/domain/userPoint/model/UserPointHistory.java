@@ -1,6 +1,7 @@
 package kr.hhplus.be.server.domain.userPoint.model;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.userPoint.enums.TransactionType;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 

@@ -1,6 +1,7 @@
 package kr.hhplus.be.server.domain.concert.model;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.concert.enums.ConcertSeatStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;

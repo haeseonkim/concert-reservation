@@ -1,7 +1,7 @@
 package kr.hhplus.be.server.domain.queueToken.repository;
 
 import kr.hhplus.be.server.domain.queueToken.model.QueueToken;
-import kr.hhplus.be.server.domain.queueToken.model.QueueTokenStatus;
+import kr.hhplus.be.server.domain.queueToken.enums.QueueTokenStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

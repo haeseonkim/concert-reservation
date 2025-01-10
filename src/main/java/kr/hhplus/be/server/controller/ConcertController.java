@@ -1,30 +1,22 @@
 package kr.hhplus.be.server.controller;
 
+import kr.hhplus.be.server.domain.concert.service.ConcertService;
 import kr.hhplus.be.server.dto.ConcertDTO.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/concert")
 public class ConcertController {
+    private final ConcertService concertService;
     // 1) 콘서트 예약 가능한 날짜 조회
     @GetMapping("/{id}/dates")
     public ResponseEntity<List<AvailableDateResponse>> getAvailableDates(@PathVariable long id) {
-        // TODO: 예약 가능한 날짜 조회 로직 추가
-        List<AvailableDateResponse> availableDates = List.of(
-                AvailableDateResponse.builder()
-                        .date(LocalDate.now())
-                        .build(),
-                AvailableDateResponse.builder()
-                        .date(LocalDate.now())
-                        .build()
-        );
-        return ResponseEntity.ok(availableDates);
+        return ResponseEntity.ok(concertService.getAvailableDate(id));
     }
 
     // 2) 예약 가능한 좌석 조회
