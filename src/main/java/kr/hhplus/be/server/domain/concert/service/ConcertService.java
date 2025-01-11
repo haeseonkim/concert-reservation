@@ -17,7 +17,7 @@ public class ConcertService {
 
     // 1) 예약 가능 날짜 조회 서비스
     @Transactional(readOnly = true)
-    public List<AvailableDateResponse> getAvailableDate(long concertId) {
+    public List<AvailableDateResponse> getAvailableDateByConcertId(long concertId) {
         List<ConcertScheduleProjection> schedules = concertScheduleRepository.findAllByConcertIdAndAvailableIsTrue(concertId);
         return ConcertScheduleMapper.INSTANCE.toResponseList(schedules);
     }

@@ -16,7 +16,7 @@ public class ConcertController {
     // 1) 콘서트 예약 가능한 날짜 조회
     @GetMapping("/{id}/dates")
     public ResponseEntity<List<AvailableDateResponse>> getAvailableDates(@PathVariable long id) {
-        return ResponseEntity.ok(concertService.getAvailableDate(id));
+        return ResponseEntity.ok(concertService.getAvailableDateByConcertId(id));
     }
 
     // 2) 예약 가능한 좌석 조회
