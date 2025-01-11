@@ -17,7 +17,8 @@ public class ConcertDTO {
 
     @Getter
     @Builder
-    public static class GetConcertSeatResponse {
+    public static class AvailableSeatResponse {
+        private Long id;
         private int seatNum;
         private int price;
     }

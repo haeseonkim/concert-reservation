@@ -21,19 +21,8 @@ public class ConcertController {
 
     // 2) 예약 가능한 좌석 조회
     @GetMapping("/{id}/seats")
-    public ResponseEntity<List<GetConcertSeatResponse>> getAvailableSeats(@PathVariable long id) {
-        // TODO: 예약 가능한 좌석 조회 로직 추가
-        List<GetConcertSeatResponse> availableSeats = List.of(
-                GetConcertSeatResponse.builder()
-                        .seatNum(1)
-                        .price(100)
-                        .build(),
-                GetConcertSeatResponse.builder()
-                        .seatNum(2)
-                        .price(50)
-                        .build()
-        );
-        return ResponseEntity.ok(availableSeats);
+    public ResponseEntity<List<AvailableSeatResponse>> getAvailableSeats(@PathVariable long id) {
+        return ResponseEntity.ok(concertService.getAvailableSeatByScheduleId(id));
     }
 
     // 3) 콘서트 예약
