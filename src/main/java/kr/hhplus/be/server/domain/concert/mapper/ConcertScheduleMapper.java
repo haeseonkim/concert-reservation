@@ -15,8 +15,8 @@ public interface ConcertScheduleMapper {
 
     DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    @Mapping(target = "date", expression = "java(projection.getScheduleDate().format(FORMATTER))")
+    @Mapping(target = "date", expression = "java(scheduleProjection.getScheduleDate().format(FORMATTER))")
     AvailableDateResponse toResponse(ConcertScheduleProjection scheduleProjection);
 
-    List<AvailableDateResponse> toResponseList(List<ConcertScheduleProjection> projections);
+    List<AvailableDateResponse> toResponseList(List<ConcertScheduleProjection> scheduleProjections);
 }

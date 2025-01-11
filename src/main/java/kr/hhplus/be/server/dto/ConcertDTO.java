@@ -3,8 +3,6 @@ package kr.hhplus.be.server.dto;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDate;
-
 public class ConcertDTO {
     private ConcertDTO() {
         throw new IllegalStateException("DTO group class");
@@ -13,7 +11,7 @@ public class ConcertDTO {
     @Getter
     @Builder
     public static class AvailableDateResponse {
-        private LocalDate date;
+        private String date;
     }
 
     @Getter
