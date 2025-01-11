@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ConcertScheduleRepository extends JpaRepository<ConcertSchedule, Long> {
-    @Query("SELECT cs.scheduleDate AS scheduleDate " +
+    @Query("SELECT cs.id AS id, cs.scheduleDate AS scheduleDate " +
             "FROM ConcertSchedule cs WHERE cs.concertId = :id AND cs.isAvailable = true")
     List<ConcertScheduleProjection> findAllByConcertIdAndAvailableIsTrue(Long id);
 }

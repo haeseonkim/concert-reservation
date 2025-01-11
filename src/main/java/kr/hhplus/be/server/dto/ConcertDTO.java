@@ -11,6 +11,7 @@ public class ConcertDTO {
     @Getter
     @Builder
     public static class AvailableDateResponse {
+        private Long id;
         private String date;
     }
 
