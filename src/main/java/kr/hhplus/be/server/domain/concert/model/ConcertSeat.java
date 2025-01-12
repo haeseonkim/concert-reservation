@@ -17,9 +17,6 @@ public class ConcertSeat {
     private Long id;
 
     @Column(nullable = false)
-    private Long concertId;
-
-    @Column(nullable = false)
     private Long scheduleId;
 
     @Column(nullable = false)
