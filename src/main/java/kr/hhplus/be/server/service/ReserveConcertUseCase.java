@@ -22,6 +22,8 @@ public class ReserveConcertUseCase {
 
         ConcertSeat reservedSeat = concertService.holdSeat(seat, userId);
 
+        concertService.createReservation(reservedSeat, userId);
+
         return ConcertSeatMapper.INSTANCE.toReservationResponse(reservedSeat);
     }
 }

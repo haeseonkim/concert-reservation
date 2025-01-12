@@ -1,13 +1,16 @@
 package kr.hhplus.be.server.domain.concert.service;
 
 import kr.hhplus.be.server.domain.concert.enums.ConcertSeatStatus;
+import kr.hhplus.be.server.domain.concert.enums.PaymentStatus;
 import kr.hhplus.be.server.domain.concert.exception.SeatAlreadyReservedException;
 import kr.hhplus.be.server.domain.concert.exception.SeatNotFoundException;
 import kr.hhplus.be.server.domain.concert.mapper.ConcertScheduleMapper;
 import kr.hhplus.be.server.domain.concert.mapper.ConcertSeatMapper;
+import kr.hhplus.be.server.domain.concert.model.ConcertReservation;
 import kr.hhplus.be.server.domain.concert.model.ConcertScheduleProjection;
 import kr.hhplus.be.server.domain.concert.model.ConcertSeat;
 import kr.hhplus.be.server.domain.concert.model.ConcertSeatProjection;
+import kr.hhplus.be.server.domain.concert.repository.ConcertReservationRepository;
 import kr.hhplus.be.server.domain.concert.repository.ConcertScheduleRepository;
 import kr.hhplus.be.server.domain.concert.repository.ConcertSeatRepository;
 import kr.hhplus.be.server.dto.ConcertDTO.*;
@@ -23,6 +26,7 @@ import java.util.List;
 public class ConcertService {
     private final ConcertScheduleRepository concertScheduleRepository;
     private final ConcertSeatRepository concertSeatRepository;
+    private final ConcertReservationRepository concertReservationRepository;
 
     private static final int SEAT_HOLD_MINUTES = 5;
 
@@ -33,7 +37,7 @@ public class ConcertService {
         return ConcertScheduleMapper.INSTANCE.toResponseList(schedules);
     }
 
-    // 1) 예약 가능 날짜 조회 서비스
+    // 2) 예약 가능 좌석 조회 서비스
     @Transactional(readOnly = true)
     public List<AvailableSeatResponse> getAvailableSeatByScheduleId(long scheduleId) {
         List<ConcertSeatProjection> seats = concertSeatRepository.findAllByScheduleIdAndStatus(scheduleId, ConcertSeatStatus.AVAILABLE);
@@ -56,5 +60,16 @@ public class ConcertService {
         seat.setHoldUntil(LocalDateTime.now().plusMinutes(SEAT_HOLD_MINUTES));
         seat.setUserId(userId);
         return concertSeatRepository.save(seat);
+    }
+
+    public void createReservation(ConcertSeat seat, long userId) {
+        ConcertReservation reservation = ConcertReservation.builder()
+                .seatId(seat.getId())
+                .userId(userId)
+                .reservedAt(LocalDateTime.now())
+                .paymentStatus(PaymentStatus.PENDING)
+                .build();
+
+        concertReservationRepository.save(reservation);
     }
 }
