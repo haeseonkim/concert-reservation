@@ -4,8 +4,6 @@ import kr.hhplus.be.server.domain.concert.enums.ConcertSeatStatus;
 import kr.hhplus.be.server.domain.concert.enums.PaymentStatus;
 import kr.hhplus.be.server.domain.concert.exception.SeatAlreadyReservedException;
 import kr.hhplus.be.server.domain.concert.exception.SeatNotFoundException;
-import kr.hhplus.be.server.domain.concert.mapper.ConcertScheduleMapper;
-import kr.hhplus.be.server.domain.concert.mapper.ConcertSeatMapper;
 import kr.hhplus.be.server.domain.concert.model.ConcertReservation;
 import kr.hhplus.be.server.domain.concert.model.ConcertScheduleProjection;
 import kr.hhplus.be.server.domain.concert.model.ConcertSeat;
@@ -13,10 +11,8 @@ import kr.hhplus.be.server.domain.concert.model.ConcertSeatProjection;
 import kr.hhplus.be.server.domain.concert.repository.ConcertReservationRepository;
 import kr.hhplus.be.server.domain.concert.repository.ConcertScheduleRepository;
 import kr.hhplus.be.server.domain.concert.repository.ConcertSeatRepository;
-import kr.hhplus.be.server.dto.ConcertDTO.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,18 +26,12 @@ public class ConcertService {
 
     private static final int SEAT_HOLD_MINUTES = 5;
 
-    // 1) 예약 가능 날짜 조회 서비스
-    @Transactional(readOnly = true)
-    public List<AvailableDateResponse> getAvailableDateByConcertId(long concertId) {
-        List<ConcertScheduleProjection> schedules = concertScheduleRepository.findAllByConcertIdAndAvailableIsTrue(concertId);
-        return ConcertScheduleMapper.INSTANCE.toResponseList(schedules);
+    public List<ConcertScheduleProjection> getAvailableDateByConcertId(long concertId) {
+        return concertScheduleRepository.findAllByConcertIdAndAvailableIsTrue(concertId);
     }
 
-    // 2) 예약 가능 좌석 조회 서비스
-    @Transactional(readOnly = true)
-    public List<AvailableSeatResponse> getAvailableSeatByScheduleId(long scheduleId) {
-        List<ConcertSeatProjection> seats = concertSeatRepository.findAllByScheduleIdAndStatus(scheduleId, ConcertSeatStatus.AVAILABLE);
-        return ConcertSeatMapper.INSTANCE.toResponseList(seats);
+    public List<ConcertSeatProjection> getAvailableSeatByScheduleId(long scheduleId) {
+        return concertSeatRepository.findAllByScheduleIdAndStatus(scheduleId, ConcertSeatStatus.AVAILABLE);
     }
 
     public ConcertSeat validateSeatExists(long seatId) {
