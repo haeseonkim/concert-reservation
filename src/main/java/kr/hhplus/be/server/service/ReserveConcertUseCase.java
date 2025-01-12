@@ -2,6 +2,7 @@ package kr.hhplus.be.server.service;
 
 import kr.hhplus.be.server.domain.concert.mapper.ConcertSeatMapper;
 import kr.hhplus.be.server.domain.concert.model.ConcertSeat;
+import kr.hhplus.be.server.domain.concert.service.ConcertReservationService;
 import kr.hhplus.be.server.domain.concert.service.ConcertService;
 import kr.hhplus.be.server.dto.ConcertDTO.*;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ReserveConcertUseCase {
     private final ConcertService concertService;
+    private final ConcertReservationService concertReservationService;
 
     @Transactional
     public ReservationResponse execute(long seatId, long userId) {
@@ -22,7 +24,7 @@ public class ReserveConcertUseCase {
 
         ConcertSeat reservedSeat = concertService.holdSeat(seat, userId);
 
-        concertService.createReservation(reservedSeat, userId);
+        concertReservationService.createReservation(reservedSeat, userId);
 
         return ConcertSeatMapper.INSTANCE.toReservationResponse(reservedSeat);
     }
