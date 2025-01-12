@@ -6,7 +6,6 @@ import kr.hhplus.be.server.domain.queueToken.repository.QueueTokenRepository;
 import kr.hhplus.be.server.dto.QueueTokenDTO.*;
 import kr.hhplus.be.server.domain.queueToken.mapper.QueueTokenMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +37,6 @@ public class QueueTokenService {
         return QueueTokenMapper.INSTANCE.toWebDto(queueTokenRepository.save(queueToken));
     }
 
-    @Scheduled(cron = "0 * * * * *")
     @Transactional
     public void updateExpiredTokens() {
         int updatedCount = queueTokenRepository.updateStatusForExpiredTokens(LocalDateTime.now(), QueueTokenStatus.EXPIRED);
