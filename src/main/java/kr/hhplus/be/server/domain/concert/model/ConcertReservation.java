@@ -1,8 +1,9 @@
 package kr.hhplus.be.server.domain.concert.model;
 
 import jakarta.persistence.*;
-import kr.hhplus.be.server.domain.concert.enums.ConcertSeatStatus;
+import kr.hhplus.be.server.domain.concert.enums.PaymentStatus;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -11,29 +12,24 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConcertSeat {
+public class ConcertReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Long scheduleId;
+    private Long seatId;
 
-    @Column(nullable = false)
-    private int seatNum;
-
-    @Column(nullable = false)
-    private int price;
-
-    @Setter
     @Column(nullable = false)
     private Long userId;
 
-    @Setter
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime reservedAt;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ConcertSeatStatus status;
+    private PaymentStatus paymentStatus;
 
-    @Setter
-    private LocalDateTime holdUntil;
+    private LocalDateTime paymentCompletedAt;
 }
