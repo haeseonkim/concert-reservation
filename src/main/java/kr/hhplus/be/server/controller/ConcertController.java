@@ -17,15 +17,15 @@ public class ConcertController {
     private final ReserveConcertUseCase reserveConcertUseCase;
 
     // 1) 콘서트 예약 가능한 날짜 조회
-    @GetMapping("/{id}/dates")
-    public ResponseEntity<List<AvailableDateResponse>> getAvailableDates(@PathVariable long id) {
-        return ResponseEntity.ok(concertService.getAvailableDateByConcertId(id));
+    @GetMapping("/{concertId}/dates")
+    public ResponseEntity<List<AvailableDateResponse>> getAvailableDates(@PathVariable long concertId) {
+        return ResponseEntity.ok(concertService.getAvailableDateByConcertId(concertId));
     }
 
     // 2) 예약 가능한 좌석 조회
-    @GetMapping("/{id}/seats")
-    public ResponseEntity<List<AvailableSeatResponse>> getAvailableSeats(@PathVariable long id) {
-        return ResponseEntity.ok(concertService.getAvailableSeatByScheduleId(id));
+    @GetMapping("/{scheduleId}/seats")
+    public ResponseEntity<List<AvailableSeatResponse>> getAvailableSeats(@PathVariable long scheduleId) {
+        return ResponseEntity.ok(concertService.getAvailableSeatByScheduleId(scheduleId));
     }
 
     // 3) 콘서트 예약 (결제 전)
