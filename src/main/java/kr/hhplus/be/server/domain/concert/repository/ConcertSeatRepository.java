@@ -6,6 +6,7 @@ import kr.hhplus.be.server.domain.concert.model.ConcertSeatProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ConcertSeatRepository extends JpaRepository<ConcertSeat, Long> {
@@ -13,4 +14,5 @@ public interface ConcertSeatRepository extends JpaRepository<ConcertSeat, Long> 
             "FROM ConcertSeat cs WHERE cs.scheduleId = :id AND cs.status = :status")
     List<ConcertSeatProjection> findAllByScheduleIdAndStatus(Long id, ConcertSeatStatus status);
 
+    List<ConcertSeat> findAllByHoldUntilBeforeAndStatus(LocalDateTime now, ConcertSeatStatus status);
 }

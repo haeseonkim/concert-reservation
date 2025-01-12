@@ -9,7 +9,9 @@ import kr.hhplus.be.server.domain.concert.model.ConcertSeatProjection;
 import kr.hhplus.be.server.domain.concert.repository.ConcertScheduleRepository;
 import kr.hhplus.be.server.domain.concert.repository.ConcertSeatRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,5 +48,22 @@ public class ConcertService {
         seat.setHoldUntil(LocalDateTime.now().plusMinutes(SEAT_HOLD_MINUTES));
         seat.setUserId(userId);
         return concertSeatRepository.save(seat);
+    }
+
+    @Scheduled(cron = "0 * * * * *")
+    @Transactional
+    public void releaseExpiredSeats() {
+        List<ConcertSeat> expiredSeats = concertSeatRepository.findAllByHoldUntilBeforeAndStatus(
+                LocalDateTime.now(),
+                ConcertSeatStatus.HOLD
+        );
+
+        for (ConcertSeat seat : expiredSeats) {
+            seat.setStatus(ConcertSeatStatus.AVAILABLE);
+            seat.setHoldUntil(null);
+            seat.setUserId(null);
+        }
+
+        concertSeatRepository.saveAll(expiredSeats);
     }
 }
