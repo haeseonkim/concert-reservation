@@ -1,5 +1,6 @@
 package kr.hhplus.be.server.domain.concert.mapper;
 
+import kr.hhplus.be.server.domain.concert.model.ConcertSeat;
 import kr.hhplus.be.server.domain.concert.model.ConcertSeatProjection;
 import kr.hhplus.be.server.dto.ConcertDTO.*;
 import org.mapstruct.Mapper;
@@ -14,4 +15,6 @@ public interface ConcertSeatMapper {
     AvailableSeatResponse toResponse(ConcertSeatProjection seatProjection);
 
     List<AvailableSeatResponse> toResponseList(List<ConcertSeatProjection> seatProjections);
+
+    ReservationResponse toReservationResponse(ConcertSeat concertSeat);
 }

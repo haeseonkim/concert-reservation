@@ -17,6 +17,9 @@ public class ConcertSeat {
     private Long id;
 
     @Column(nullable = false)
+    private Long concertId;
+
+    @Column(nullable = false)
     private Long scheduleId;
 
     @Column(nullable = false)
@@ -25,14 +28,17 @@ public class ConcertSeat {
     @Column(nullable = false)
     private int price;
 
+    @Setter
     @Column(nullable = false)
     private Long userId;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ConcertSeatStatus status;
 
     private LocalDateTime reservedAt;
 
-    private LocalDateTime tempReservedAt;
+    @Setter
+    private LocalDateTime holdUntil;
 }

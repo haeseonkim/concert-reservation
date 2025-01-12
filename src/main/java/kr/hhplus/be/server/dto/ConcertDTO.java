@@ -3,6 +3,8 @@ package kr.hhplus.be.server.dto;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 public class ConcertDTO {
     private ConcertDTO() {
         throw new IllegalStateException("DTO group class");
@@ -26,13 +28,15 @@ public class ConcertDTO {
     @Getter
     public static class ReservationRequest {
         private long userId;
-        private int seatNum;
     }
 
     @Getter
     @Builder
     public static class ReservationResponse {
+        private Long Id;
+        private Long userId;
         private int seatNum;
         private String status;
+        private LocalDateTime holdUntil;
     }
 }
